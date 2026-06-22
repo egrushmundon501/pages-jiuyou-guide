@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>B体育 – 快速识别网站用途</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f8fc;
+            color: #1e2b34;
+            line-height: 1.6;
+            padding: 1.5rem 1rem 2.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 开篇短句 — 干净、留白 */
+        .opening {
+            margin: 0.8rem 0 2.2rem 0;
+            font-size: 1.2rem;
+            font-weight: 350;
+            letter-spacing: 0.02em;
+            line-height: 1.5;
+            color: #1e4a5e;
+            border-left: 4px solid #2e8b8b;
+            padding-left: 1.2rem;
+        }
+
+        .opening strong {
+            font-weight: 500;
+            color: #116466;
+        }
+
+        /* 承接段落 — 自然叙述 */
+        .bridging {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            padding: 1.6rem 1.5rem;
+            border-radius: 24px 8px 24px 8px;
+            box-shadow: 0 4px 12px rgba(28, 80, 80, 0.06);
+            margin-bottom: 2.2rem;
+            border: 1px solid #d7e8ed;
+        }
+
+        .bridging p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .bridging p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bridging a {
+            color: #116466;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #2e8b8b40;
+            transition: border-color 0.2s;
+        }
+
+        .bridging a:hover {
+            border-bottom-color: #1a7a7a;
+        }
+
+        /* 网格卡片 — 特点列表 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px 6px 20px 6px;
+            padding: 1.4rem 1.2rem 1.2rem 1.2rem;
+            box-shadow: 0 6px 12px -8px rgba(0, 60, 60, 0.08);
+            border: 1px solid #d6e9ef;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+        }
+
+        .feature-card:nth-child(odd) {
+            background: #f7fcfd;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px -10px #1b6b6b30;
+            border-color: #9ac7cf;
+        }
+
+        .feature-card h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #064d4d;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .feature-card h3::before {
+            content: "▹";
+            color: #2e8b8b;
+            font-size: 1.1rem;
+            margin-right: 0.2rem;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: #2d454f;
+            line-height: 1.5;
+        }
+
+        /* 温和结尾 — 类似后记/提示 */
+        .gentle-closing {
+            background: #e9f2f5;
+            padding: 1.6rem 1.5rem;
+            border-radius: 30px 6px 30px 6px;
+            margin: 0.8rem 0 1.8rem 0;
+            border: 1px solid #c2dce4;
+            color: #183d47;
+            font-size: 0.98rem;
+        }
+
+        .gentle-closing span {
+            background: #11646618;
+            padding: 0.05rem 0.4rem;
+            border-radius: 12px;
+            color: #0b5555;
+            font-weight: 450;
+        }
+
+        .gentle-closing a {
+            color: #116466;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #1f7e7e50;
+        }
+
+        .gentle-closing a:hover {
+            border-bottom-color: #1a5c5c;
+        }
+
+        /* 辅助 — FAQ摘要风格小段 */
+        .faq-mini {
+            margin-top: 0.2rem;
+            padding: 0.8rem 0 0.2rem 0;
+            border-top: 1px dashed #b6d2db;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.4rem;
+            font-size: 0.88rem;
+            color: #345f6b;
+        }
+
+        .faq-mini span {
+            background: white;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            border: 1px solid #b9d5de;
+            white-space: nowrap;
+        }
+
+        .faq-mini span i {
+            font-style: normal;
+            color: #1d7a7a;
+            margin-right: 0.3rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 540px) {
+            body {
+                padding: 1rem 0.8rem 2rem;
+            }
+
+            .opening {
+                font-size: 1.1rem;
+                padding-left: 0.9rem;
+                margin-bottom: 1.8rem;
+            }
+
+            .bridging {
+                padding: 1.2rem 1rem;
+                border-radius: 18px 4px 18px 4px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .feature-card {
+                padding: 1.1rem;
+                border-radius: 16px 4px 16px 4px;
+            }
+
+            .gentle-closing {
+                padding: 1.2rem 1rem;
+                border-radius: 24px 4px 24px 4px;
+            }
+
+            .faq-mini {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
+            }
+
+            .faq-mini span {
+                white-space: normal;
+                width: fit-content;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .feature-grid {
+                gap: 1.2rem 1.2rem;
+            }
+        }
+
+        /* 页面底部小留白 */
+        .spacer {
+            height: 0.2rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #cfe2e9;
+            margin: 1.8rem 0 0.5rem;
+            opacity: 0.5;
+        }
+
+        .fine-print {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #688a92;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 开篇短句：瞬间定位用途 -->
+    <div class="opening">
+        你打开一个网站，往往只需要三秒就能判断：<br>
+        它是不是你要找的地方。<strong>B体育</strong> 就是那种看一眼就大致清楚用途的站点。
+    </div>
+
+    <!-- 承接段落：进一步解释 + 自然嵌入链接 -->
+    <div class="bridging">
+        <p>
+            很多平台把入口藏得很深，或者首页堆满弹窗，你甚至不确定它到底提供什么。
+            而 <a href="https://portal-bsports.com">B体育</a> 的首页更接近一种「信息前台」——
+            它不绕弯子，把体育赛事、实时动态和常用功能直接铺开。
+            从分类到详情页，路径很短，适合那些不想在导航里反复跳转的人。
+        </p>
+        <p>
+            如果你习惯先扫一眼界面再决定是否注册或使用，这个网站的结构会给你比较清晰的反馈。
+            没有过度承诺，也没有夸大标语，就是一套围绕体育信息的整合面板。
+        </p>
+    </div>
+
+    <!-- 特点列表 (四个卡片) 叙事式简明 -->
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>赛程与结果聚合</h3>
+            <p>主流联赛、杯赛的即时比分与预定赛程，按时间线排列，减少切换页面次数。</p>
+        </div>
+        <div class="feature-card">
+            <h3>数据面板风格</h3>
+            <p>首页采用模块化卡片，积分、射手榜、近期状态并置，一眼获得关键信息。</p>
+        </div>
+        <div class="feature-card">
+            <h3>多项目覆盖</h3>
+            <p>足球、篮球、网球、电子竞技等，每类下设热门赛事快捷入口，不强制关注全部。</p>
+        </div>
+        <div class="feature-card">
+            <h3>轻量级交互</h3>
+            <p>页面刷新以内容为主，没有强弹窗或频繁的推荐干扰，浏览节奏由你控制。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾：带点提示与FAQ微摘要，不教条 -->
+    <div class="gentle-closing">
+        <p>▸ 如果你还在犹豫这个网站是否适合自己，可以从一个简单的动作开始：<br>
+            在浏览器输入 <a href="https://portal-bsports.com">B体育</a>，看一眼首页的赛事列表，基本就能判断信息密度是否符合你的习惯。
+        </p>
+        <p style="margin-top: 0.8rem;">
+            <span>💡</span> 不少用户把它当作赛程速查工具，也有部分人习惯使用收藏夹里的深度数据页面。用途因人而异。
+        </p>
+
+        <!-- FAQ摘要 简洁点缀 -->
+        <div class="faq-mini">
+            <span><i>常见疑问</i> 是否需要注册才能浏览？ → 多数内容可直接查看</span>
+            <span><i>场景</i> 赛前快速看阵容/赔率变动？ → 对应赛事卡片可展开</span>
+        </div>
+    </div>
+
+    <!-- 一行极细分割，保持干净 -->
+    <hr>
+
+    <div class="fine-print">
+        页面内容仅为介绍用途，不构成任何引导或保证。信息以实际站点为准。
+    </div>
+
+    <!-- 极小占位，无实际意义 -->
+    <div class="spacer"></div>
+</div>
+</body>
+</html>
